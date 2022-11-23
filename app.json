@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "monilepark",
+    "slug": "monilepark",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
