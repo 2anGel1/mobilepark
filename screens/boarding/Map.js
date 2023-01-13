@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar'
 import { Text, View, ScrollView, TextInput, Pressable } from 'react-native'
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import Icon from 'react-native-vector-icons/AntDesign'
+import IIcon from '../../elements/Icon.js'
 
 import colors from '../../style/colors'
 import styles from '../../style/styles'
@@ -10,7 +11,7 @@ import variables from '../../style/variables'
 
 
 
-const Map = () => {
+const Map = ({navigation}) => {
 
 
     return (
@@ -27,12 +28,18 @@ const Map = () => {
                 }}
             />
 
-            <Icon
+            {/* <Icon
                 name="bars"
                 size={35}
                 color={colors.black}
                 style={{ position: 'absolute', top: 40, left: 20}}
-            />
+                onPress={() => {
+                    navigation.openDrawer()
+                }}
+                
+            /> */}
+
+            <IIcon action={() => {navigation.openDrawer()}}/>
 
             <StatusBar
                 backgroundColor={colors.white}
