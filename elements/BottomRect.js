@@ -12,8 +12,15 @@ import Button from './Button';
 const BottomRect = (props) => {
 
     const [selectedTarrif, setSelectedTarrif] = useState();
+    const [selectedPay, setSelectedPay] = useState(1);
 
     const [tab, setTab] = useState(0);
+
+    const payMethods = [
+        { id: 1, title: 'Payer cash au parking' },
+        { id: 2, title: 'Payer par Mobile Monney' },
+        { id: 3, title: 'Payer par carte bancaire' },
+    ]
 
 
     if (props.show) {
@@ -106,7 +113,7 @@ const BottomRect = (props) => {
                             onPress={() => { setTab(1) }}
                         >
                             <Text style={styles.buttonText}>
-                                Réserver
+                                Suivant
                             </Text>
                         </Pressable>
                     </View>
@@ -133,6 +140,43 @@ const BottomRect = (props) => {
                     >
                         Parking de la {props.parking.entreprise}
                     </Text>
+
+                    <Text
+                        style={{ textAlign: 'center', marginTop: 30, fontSize: 18, color: colors.secondary}}
+                    >
+                        Mode de paiement
+                    </Text>
+
+                    {
+                        payMethods.map(method => (
+
+                            <Pressable
+                                id={method.id}
+                                style={styles.payRect} borderColor={selectedPay == method.id ? colors.secondary : colors.whitesmoke}
+                                onPress={() => {setSelectedPay(method.id)}}
+                            >
+
+                                <Text>
+                                    {method.title}
+                                </Text>
+                                
+                            </Pressable>
+
+                        ))
+                    }
+
+
+                    <View style={{ marginHorizontal: 35 }}>
+                        <Pressable
+                            style={styles.buttonCanvas}
+                            onPress={() => { setTab(0) }}
+                        >
+                            <Text style={styles.buttonText}>
+                                Suivant
+                            </Text>
+                        </Pressable>
+                    </View>
+
 
                 </View>
 

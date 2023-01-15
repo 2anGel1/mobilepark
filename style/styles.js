@@ -113,6 +113,18 @@ const styles = StyleSheet.create({
 
         marginHorizontal: '5%',
 
+    },
+
+    payRect:{
+        width: '85%',
+        height: 60,
+
+        marginHorizontal: '7%',
+        marginTop: 10,
+
+        borderRadius: 7,
+        borderWidth: 2,
+        borderColor: colors.grey
     }
 });
 

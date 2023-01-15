@@ -18,7 +18,7 @@ export default function App() {
 
     <NavigationContainer>
 
-      <Stack.Navigator initialRouteName='Boadring' screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName='Boarding' screenOptions={{ headerShown: false }}>
 
         <Stack.Screen
           name="Splash"
