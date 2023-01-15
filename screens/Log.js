@@ -42,10 +42,12 @@ const Log = ({ navigation }) => {
                 </View>
 
                 <View style={{ flexDirection: 'center', alignItems: 'center' }}>
+                {/* <View style={{alignItems: 'center' }}> */}
 
                     <Button title="Se connecter" action={() => { navigation.navigate("Boarding") }} />
 
                     <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                    {/* <View style={{marginTop: 10 }}> */}
 
                         <Text>
                             Vous n'avez pas de compte ?

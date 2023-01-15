@@ -1,27 +1,25 @@
 import React, { useState } from 'react'
-import Icon from 'react-native-vector-icons/AntDesign'
+import {Pressable } from 'react-native'
 
 import colors from '../style/colors'
-import styles from '../style/styles'
-import variables from '../style/variables'
+// import styles from '../style/styles'
+// import variables from '../style/variables'
 
-import { IconFill, IconOutline } from "@ant-design/icons-react-native";
 
 const IIcon = (props) => {
 
-        return (
-            
-            // <Icon
-            //     name="bars"
-            //     size={35}
-            //     color={colors.black}
-            //     style={{ position: 'absolute', top: 40, left: 20 }}
-            //     onPress={props.action}
-            // />
+    return (
 
-            <IconOutline name="account-book" />
-        )
+        <Pressable
+            style={{ backgroundColor: colors.white, width: 50, height: 50, borderRadius: 10, position: 'absolute', top: 40, left: 20 }}
+            onPress={props.action}
+        >
+        </Pressable>
+
+    )
 
 }
 
 export default IIcon
+
+

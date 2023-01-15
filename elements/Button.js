@@ -8,10 +8,10 @@ import variables from '../style/variables'
 const Button = (props) => {
     return (
         <Pressable
-            style={{ backgroundColor: colors.primary, width: variables.inputWidth, height: variables.inputHeight, justifyContent: 'center', marginTop: 20, borderRadius: 10 }}
+            style={styles.buttonCanvas}
             onPress={props.action}
         >
-            <Text style={{ textAlign: 'center', color: colors.white, fontSize: 17 }}>
+            <Text style={styles.buttonText}>
                 {props.title}
             </Text>
         </Pressable>

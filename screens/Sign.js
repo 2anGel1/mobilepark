@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ScrollView, TextInput, Pressable } from 'react-native';
+import { Text, View, ScrollView, TextInput, Pressable, Platform } from 'react-native';
 
 import colors from '../style/colors'
 import styles from '../style/styles'
@@ -11,7 +11,7 @@ const Sign = ({ navigation }) => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
 
-            <View style={styles.container} backgroundColor={colors.whitesmoke} width={'100%'}>
+            <View style={styles.container} backgroundColor={colors.whitesmoke} width='100%'>
 
                 <View style={styles.topCircle1} />
                 <View style={styles.topCircle2} />
@@ -52,6 +52,7 @@ const Sign = ({ navigation }) => {
                 </View>
 
                 <View style={{ flexDirection: 'center', alignItems: 'center' }}>
+                {/* <View style={{alignItems: 'center' }}> */}
 
                     <Pressable
                         style={{ backgroundColor: colors.primary, width: variables.inputWidth, height: variables.inputHeight, justifyContent: 'center', marginTop: 20, borderRadius: 10 }}
@@ -65,6 +66,7 @@ const Sign = ({ navigation }) => {
                     </Pressable>
 
                     <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                    {/* <View style={{marginTop: 10 }}> */}
 
                         <Text>
                             Avez vous dejà un compte ?

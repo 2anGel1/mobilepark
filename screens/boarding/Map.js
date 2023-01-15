@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import { StatusBar } from 'expo-status-bar'
-import { Text, View, ActivityIndicator } from 'react-native'
+
+// import { StatusBar } from 'expo-status-bar'
+
+import { Text, View, ActivityIndicator, Pressable } from 'react-native'
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps'
+
 import IIcon from '../../elements/Icon.js'
 
-import colors from '../../style/colors'
+import BottomRect from '../../elements/BottomRect'
+
 import styles from '../../style/styles'
+import colors from '../../style/colors'
 import customRetroMap from '../../style/customRetroMap.json'
-import variables from '../../style/variables'
 
 import * as Location from 'expo-location';
+
+//Axios
 
 
 const Map = ({ navigation }) => {
@@ -18,27 +24,68 @@ const Map = ({ navigation }) => {
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
 
-    const markers = [
+    const [showBottomRect, setShowBottomRect] = useState(false);
+    const [selectedParking, setSelectedParking] = useState({})
+
+    const parkings = [
         {
-            key: 0,
+            id: 0,
             title: 'Parking 1',
+            entreprise: 'Sorbonne',
             coordinates: {
-                latitude: "5.388906",
-                longitude: "-3.965171"
-            }
+                latitude: 5.394648,
+                longitude: -3.964313
+            },
+            tarrifs: [
+                {id: 1, prix: 200, temps: "30m"},
+                {id: 2, prix: 300, temps: "1h"},
+                {id: 3, prix: 500, temps: '2h'}
+            ],
+            places: [
+                {id: 1, title: "B01"},
+                {id: 2, title: "B02"},
+                {id: 3, title: "B03"},
+            ]
         },
 
         {
-            key: 1,
+            id: 1,
             title: 'Parking 2',
+            entreprise: 'SIR',
             coordinates: {
-                latitude: "5.387651",
-                longitude: "-3.962596"
-            }
+                latitude: 5.392651,
+                longitude:  -3.962360
+            },
+            tarrifs: [
+                {id: 1, prix: 300, temps: "30m"},
+                {id: 2, prix: 500, temps: "1h30m"},
+                {id: 3, prix: 700, temps: '2h'},
+            ],
+            places: [
+                {id: 1,title: "A01"},
+                {id: 2,title: "A02"}, 
+                {id: 3,title: "A03"},
+                {id: 4,title: "A04"},
+            ]
         }
     ]
 
+    // const getData = () => {
+
+    //     fetch("https://jsonplaceholder.typicode.com/users")
+    //         .then(response => response.json())
+    //         .then((responseJson) => {
+
+    //             alert(responseJson)
+
+    //         })
+    //         .catch(error => alert(error))
+    // }
+
+
     useEffect(() => {
+
+
         (async () => {
 
             let { status } = await Location.requestForegroundPermissionsAsync();
@@ -56,7 +103,7 @@ const Map = ({ navigation }) => {
     let longitude = "";
     let latitude = "";
 
-    if(location){
+    if (location) {
         load = false
     }
 
@@ -86,22 +133,28 @@ const Map = ({ navigation }) => {
                     }}
                     showsUserLocation={true}
                     followsUserLocation={true}
-                    // customMapStyle={customRetroMap}
+                    customMapStyle={customRetroMap}
                 >
 
                     {
-                        markers.map(marker => (
-                            <Marker key={marker.key} coordinate={marker.coordinates} title={marker.title}/>
+                        parkings.map(parking => (
+
+                            <Marker
+                                onPress={() => {
+                                    setSelectedParking(showBottomRect ? {} : parking)
+                                    setShowBottomRect(!showBottomRect)
+                                }}
+
+                                key={parking.id} coordinate={parking.coordinates} title={parking.title} />
                         ))
                     }
 
                 </MapView>
 
-                {/* <IIcon action={() => { navigation.openDrawer() }} /> */}
+                <IIcon action={() => { navigation.openDrawer() }} />
 
-                <StatusBar
-                    backgroundColor={colors.white}
-                />
+                <BottomRect show={showBottomRect} parking={selectedParking}/>
+
             </View>
         )
 
